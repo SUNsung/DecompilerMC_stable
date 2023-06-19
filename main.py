@@ -17,7 +17,7 @@ from subprocess import CalledProcessError
 from typing import Union
 from urllib.error import HTTPError, URLError
 
-assert sys.version_info >= (3, 7)
+assert sys.version_info >= (3, 8)
 
 MANIFEST_LOCATION = "https://piston-meta.mojang.com/mc/game/version_manifest.json"
 CLIENT = "client"
@@ -266,7 +266,7 @@ def get_mappings(version, side, quiet):
             jfile = json.load(f)
             url = jfile['downloads']
             if side == CLIENT:  # client:
-                if url['client_mappings']:
+                if 'client_mappings' in url:
                     url = url['client_mappings']['url']
                 else:
                     if not quiet:

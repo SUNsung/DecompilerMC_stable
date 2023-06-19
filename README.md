@@ -26,7 +26,6 @@ The code will then be inside the folder called `./src/<name_version(option_hash)
 
 The `./tmp/` directory can be removed without impact
 
-There is a common release here:  https://github.com/hube12/DecompilerMC/releases/latest for all version
 
 ----
 

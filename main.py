@@ -202,7 +202,7 @@ def get_version_manifest(target_version, quiet):
                     break
     else:
         if not quiet:
-            writeln(f'{bct.FAIL}ERROR: Missing manifest file:{bct.END} version.json')
+            writeln(f'{bct.FAIL}ERROR: Missing manifest file:{bct.END} {target_version}/version.json')
             readln("Aborting, press anything to exit")
         sys.exit(-1)
 
@@ -279,7 +279,7 @@ def get_version_jar(target_version, side, quiet):
                 sys.exit(-1)
     else:
         if not quiet:
-            writeln(f'{bct.FAIL}ERROR: Missing manifest file:{bct.END} version.json')
+            writeln(f'{bct.FAIL}ERROR: Missing manifest file:{bct.END} {target_version}/version.json')
             readln("Aborting, press anything to exit")
         sys.exit(-1)
     if not quiet:
@@ -320,7 +320,7 @@ def get_mappings(version, side, quiet):
             download_file(url, f'mappings/{version}/{"client" if side == CLIENT else "server"}.txt', quiet)
     else:
         if not quiet:
-            writeln(f'{bct.FAIL}ERROR: Missing manifest file:{bct.END} version.json')
+            writeln(f'{bct.FAIL}ERROR: Missing manifest file:{bct.END} {version}/version.json')
             readln("Aborting, press anything to exit")
         sys.exit(-1)
 
@@ -672,10 +672,10 @@ def main():
         writeln("Please input a valid version starting from 19w36a (snapshot) or 1.14.4 (releases)")
         writeln(f"Use '{bct.CYAN}snap{bct.END}' for latest snapshot ({snapshot}) or '{bct.BLUE}latest{bct.END}' for latest version ({latest})")
         version = readln().lower()
-    if version in ["snap", "s", "snapshot"]:
+    if version in ["snap", "sn", "sna", "snaps", "s", "snapshot"]:
         version = snapshot
         writeln(f"Selected {bct.CYAN}snapshot{bct.END} version: {snapshot}")
-    if version in ["latest", "l"]:
+    if version in ["latest", "la", "lat", "last", "las", "late", "l"]:
         version = latest
         writeln(f"Selected {bct.BLUE}latest{bct.END} version: {latest}")
     writeln(f'Selected version: {bct.HEADER}{version}{bct.END}')
